@@ -32,32 +32,23 @@
     
 <thead>
     <tr>
+        
+        <th>Name</th>
         <th>Book Name</th>
-        <th>Price</th>
-        <th>Book Type</th>
         <th>Actions</th>
     </tr>
 </thead>
 <tbody>
     
-    @foreach($books as $book)
+    @foreach($bookrequests as $bookrequest)
     <tr>
-        <td>{{$book->name}}</td>
-        <td>{{$book->price}}</td>
-        <td>{{$book->bookType->type}}</td>
-        <td>
-          <a href="{{route('books.show',$book->id)}}" class="btn btn-info" >view</a>
-          @auth
-          <a href="{{route('books.edit',$book->id)}}" class="btn btn-success ml-3" >edit</a>
-          
-        </td>
-        <td><form action="{{route('books.destroy',$book->id)}}" method="post">
-            @csrf
-        @method('delete')
-            <input type="submit" class="btn btn-danger" value="delete">
-          </form></td>
-       @endauth
+        <td>{{$bookrequest->name}}</td>
+        <td>{{$bookrequest->book->name}}</td>
         
+        
+        <td>
+          <a href="{{route('requests.show',$bookrequest->id)}}" class="btn btn-info" >view</a>
+         
     </tr>
      
     @endforeach
@@ -65,6 +56,6 @@
 </tbody>
 
     </table>
-    {!! $books->links() !!}
+    {!! $bookrequests->links() !!}
 </div>
 @endsection

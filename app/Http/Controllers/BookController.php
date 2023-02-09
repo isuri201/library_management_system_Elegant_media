@@ -67,7 +67,8 @@ class BookController extends Controller
      */
     public function edit(Book $book)
     {
-         return view('books.edit',compact('book'));
+        $booktypes = BookType::all();
+         return view('books.edit',compact('book','booktypes'));
     }
 
     /**
@@ -79,7 +80,8 @@ class BookController extends Controller
      */
     public function update(Request $request, Book $book)
     {
-        //
+        $book->update($request->all());
+        return back()->with('success', 'Book details updated successfully');
     }
 
     /**

@@ -6,7 +6,6 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Book;
 use Mail;
-
 use App\Models\RequestBook;
 
 class ReuqestBookController extends Controller
@@ -18,7 +17,8 @@ class ReuqestBookController extends Controller
      */
     public function index()
     {
-        //
+        $bookrequests = RequestBook::paginate(5);
+        return view('requests.all',compact('bookrequests'));
     }
 
     /**

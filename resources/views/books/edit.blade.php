@@ -41,8 +41,10 @@
   <label for="phone">Select Book Type</label>
         <select name="type" class="form-select">
         <option>--select book type--</option>
+        {{$booktypeid = $book->book_type_id}}
             @foreach($booktypes as $booktype)
-        <option value="{{$booktype->id}}" {{($book->book_type_id == $booktype->id) ? "selected"}} >{{$booktype->type}}</option>
+            {{$booktype_id = $booktype->id}}
+        <option value="{{$booktype->id}}" {{$booktypeid == $booktype_id ? 'selected':''}}>  {{$booktype->type}}</option>
         @endforeach
         </select>
   </div>
